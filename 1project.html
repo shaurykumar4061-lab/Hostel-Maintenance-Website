@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HostelCare - Maintenance Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- LOGIN PAGE -->
+<div id="loginPage" class="login-page">
+    <div class="login-box">
+        <div class="login-logo">H</div>
+        <h1>HostelCare </h1>
+        <p class="login-sub">HOSTEL MAINTENANCE PORTAL</p>
+
+        <h2 id="coc">Welcome Back!</h2>
+        <p>Login to manage your maintenance requests.</p>
+
+        <form id="loginForm">
+            <label>Username</label>
+            <input id="username" type="text"
+                   placeholder="Enter username" required>
+
+            <label>Password</label>
+            <input id="password" type="password"
+                   placeholder="Enter password" required>
+
+            <button type="submit" class="login-btn">
+                LOGIN TO DASHBOARD →
+            </button>
+        </form>
+        <p class="demo">Demo: student / 1234</p>
+    </div>
+</div>
+
+<!-- MAIN APPLICATION -->
+<div id="app" class="app hidden">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="logo">H</div>
+            <div>
+                <h2>HostelCare</h2>
+                <small>STUDENT PORTAL</small>
+            </div>
+        </div>
+
+        <p class="nav-title">MAIN MENU</p>
+
+        <nav>
+            <button class="nav-btn active" data-page="dashboard">
+                ▦ Dashboard
+            </button>
+            <button class="nav-btn" data-page="new">
+                ＋ New Complaint
+            </button>
+            <button class="nav-btn" data-page="complaints">
+                ▤ My Complaints
+            </button>
+            <button class="nav-btn" data-page="track">
+                ◎ Track Status
+            </button>
+            <button class="nav-btn" data-page="help">
+                ? Help & Support
+            </button>
+        </nav>
+
+        <div class="side-bottom">
+            <div class="user-card">
+                <div class="avatar">ST</div>
+                <div>
+                    <b id="displayUser">Student</b>
+                    <small>Hostel Resident</small>
+                </div>
+            </div>
+            <button id="logout" class="logout-btn">
+                ↪ Logout
+            </button>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <header>
+            <div>
+                <p class="welcome">HOSTEL MAINTENANCE SYSTEM</p>
+                <h1 id="pageTitle">Dashboard</h1>
+                <p id="subtitle">Welcome to your student portal.</p>
+            </div>
+            <div class="profile">● Online</div>
+        </header>
+
+        <!-- DASHBOARD -->
+        <section class="page active" id="dashboard">
+
+            <div class="hero">
+                <div>
+                    <span>YOUR HOSTEL, YOUR COMFORT</span>
+                    <h2>Better Living<br>Starts With Us.</h2>
+                    <p>
+                        Report issues. Track progress.
+                        Enjoy a better hostel experience.
+                    </p>
+                    <button class="light-btn" data-go="new">
+                        + Report an Issue
+                    </button>
+                </div>
+                <div class="hero-art">🏠</div>
+            </div>
+
+            <h2 class="heading">Dashboard Overview</h2>
+
+            <div class="stats">
+                <div class="stat purple">
+                    <span>▤</span>
+                    <p>Total Complaints</p>
+                    <h2 id="total">0</h2>
+                </div>
+
+                <div class="stat yellow">
+                    <span>◷</span>
+                    <p>Registered</p>
+                    <h2 id="registered">0</h2>
+                </div>
+
+                <div class="stat blue">
+                    <span>⚙</span>
+                    <p>In Progress</p>
+                    <h2 id="progress">0</h2>
+                </div>
+
+                <div class="stat green">
+                    <span>✓</span>
+                    <p>Resolved</p>
+                    <h2 id="resolved">0</h2>
+                </div>
+            </div>
+
+            <div class="panel">
+                <h2>Recent Complaints</h2>
+                <div id="recentList"></div>
+            </div>
+        </section>
+
+        <!-- NEW COMPLAINT -->
+        <section class="page" id="new">
+            <div class="panel">
+                <h2>Submit New Complaint</h2>
+                <p class="muted">
+                    Enter your maintenance issue details below.
+                </p>
+
+                <form id="complaintForm">
+                    <div class="form-grid">
+
+                        <div>
+                            <label>Student Name</label>
+                            <input id="student" required
+                                   placeholder="Your name">
+                        </div>
+
+                        <div>
+                            <label>Room Number</label>
+                            <input id="room" required
+                                   placeholder="A-101">
+                        </div>
+
+                        <div>
+                            <label>Category</label>
+                            <select id="category" required>
+                                <option value="">Select Category</option>
+                                <option>Electrical</option>
+                                <option>Plumbing</option>
+                                <option>Furniture</option>
+                                <option>Wi-Fi</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label>Urgency Level</label>
+                            <select id="urgency" required>
+                                <option value="">Select Urgency</option>
+                                <option>Low</option>
+                                <option>Medium</option>
+                                <option>Emergency</option>
+                            </select>
+                        </div>
+
+                        <div class="full">
+                            <label>Issue Description</label>
+                            <textarea id="description" required
+                                placeholder="Describe your problem..."></textarea>
+                        </div>
+                    </div>
+
+                    <button class="primary-btn" type="submit">
+                        Submit Complaint →
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- MY COMPLAINTS -->
+        <section class="page" id="complaints">
+            <div class="panel">
+
+                <div class="panel-top">
+                    <div>
+                        <h2>My Complaints</h2>
+                        <p class="muted">Manage your submitted tickets.</p>
+                    </div>
+
+                    <button class="primary-btn" data-go="new">
+                        + New Ticket
+                    </button>
+                </div>
+
+                <div class="toolbar">
+                    <input id="search" placeholder="Search complaints...">
+
+                    <select id="filter">
+                        <option>All</option>
+                        <option>Registered</option>
+                        <option>Assigned</option>
+                        <option>In Progress</option>
+                        <option>Resolved</option>
+                    </select>
+
+                    <button class="primary-btn" id="exportBtn">
+                        ↓ Export CSV
+                    </button>
+                </div>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Ticket ID</th>
+                                <th>Room</th>
+                                <th>Category</th>
+                                <th>Urgency</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="complaintList"></tbody>
+                    </table>
+                </div>
+
+                <p id="emptyMessage">No complaints found.</p>
+            </div>
+        </section>
+
+        <!-- TRACK STATUS -->
+        <section class="page" id="track">
+            <div class="panel">
+                <h2>Track Your Complaint</h2>
+                <p class="muted">
+                    Enter your ticket ID to check its progress.
+                </p>
+
+                <div class="track-box">
+                    <input id="trackId" placeholder="Enter ticket ID">
+                    <button class="primary-btn" id="trackBtn">
+                        Track Now
+                    </button>
+                </div>
+
+                <div id="trackResult"></div>
+            </div>
+        </section>
+
+        <!-- HELP AND SUPPORT -->
+        <section class="page" id="help">
+            <div class="panel">
+                <h2>Help & Support</h2>
+                <p class="muted">
+                    We are here to make your hostel experience better.
+                </p>
+
+                <div class="help-card">
+                    <h3>📝 Submit Complaint</h3>
+                    <p>
+                        Go to New Complaint and enter your room number,
+                        category and problem details.
+                    </p>
+                </div>
+
+                <div class="help-card">
+                    <h3>🔍 Track Complaint</h3>
+                    <p>
+                        Use your generated ticket ID to view the
+                        status of your request.
+                    </p>
+                </div>
+
+                <div class="help-card">
+                    <h3>⚡ Emergency Issues</h3>
+                    <p>
+                        Select Emergency for urgent maintenance problems.
+                    </p>
+                </div>
+
+                <div class="help-card">
+                    <h3>📞 Contact Support</h3>
+                    <p>
+                        For immediate help, contact your hostel
+                        warden or maintenance office.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            © 2026 HostelCare | Hostel Maintenance Management System
+        </footer>
+    </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
